@@ -54,6 +54,9 @@ locals {
     # must be false when preemptible is true
     var.preemptible ? false : var.automatic_restart
   )
+  provisioning_model = (
+    var.preemptible ? var.provision_model : "STANDARD"
+  )
 }
 
 ####################
@@ -70,6 +73,7 @@ resource "google_compute_instance_template" "tpl" {
   metadata_startup_script = var.startup_script
   region                  = var.region
   min_cpu_platform        = var.min_cpu_platform
+  provisioning_model      = local.provisioning_model
   dynamic "disk" {
     for_each = local.all_disks
     content {
