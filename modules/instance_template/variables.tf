@@ -59,6 +59,12 @@ variable "preemptible" {
   default     = false
 }
 
+variable "provision_model" {
+  type        = string
+  description = "Type of preemptible VM"
+  default     = null
+}
+
 variable "automatic_restart" {
   type        = bool
   description = "(Optional) Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user)."
