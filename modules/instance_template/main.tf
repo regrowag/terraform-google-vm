@@ -73,7 +73,6 @@ resource "google_compute_instance_template" "tpl" {
   metadata_startup_script = var.startup_script
   region                  = var.region
   min_cpu_platform        = var.min_cpu_platform
-  provisioning_model      = local.provisioning_model
   dynamic "disk" {
     for_each = local.all_disks
     content {
@@ -150,6 +149,7 @@ resource "google_compute_instance_template" "tpl" {
   }
 
   scheduling {
+    provisioning_model  = local.provisioning_model
     preemptible         = var.preemptible
     automatic_restart   = local.automatic_restart
     on_host_maintenance = local.on_host_maintenance
