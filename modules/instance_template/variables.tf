@@ -77,6 +77,12 @@ variable "on_host_maintenance" {
   default     = "MIGRATE"
 }
 
+variable "termination_action" {
+  type        = string
+  description = "Action to perform on SPOT instance termination"
+  default     = ""
+}
+
 variable "region" {
   type        = string
   description = "Region where the instance template should be created."
