@@ -153,6 +153,7 @@ resource "google_compute_instance_template" "tpl" {
     preemptible         = var.preemptible
     automatic_restart   = local.automatic_restart
     on_host_maintenance = local.on_host_maintenance
+    instance_termination_action = var.termination_action
   }
 
   advanced_machine_features {
