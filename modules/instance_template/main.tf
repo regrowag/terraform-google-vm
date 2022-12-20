@@ -146,13 +146,14 @@ resource "google_compute_instance_template" "tpl" {
 
   lifecycle {
     create_before_destroy = "true"
+    ignore_changes        = all
   }
 
   scheduling {
-    provisioning_model  = local.provisioning_model
-    preemptible         = var.preemptible
-    automatic_restart   = local.automatic_restart
-    on_host_maintenance = local.on_host_maintenance
+    provisioning_model          = local.provisioning_model
+    preemptible                 = var.preemptible
+    automatic_restart           = local.automatic_restart
+    on_host_maintenance         = local.on_host_maintenance
     instance_termination_action = var.termination_action
   }
 
